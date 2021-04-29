@@ -25,13 +25,13 @@ cat << EOF > product.json
     "brainlife": [
         {
             "type": "image/png",
-	    	"name": "B1 Sensitivity Map",
-            "base64": "$(base64 -w 0 qa1.png)"
+	    	"name": "Histogram of Measurements",
+            "base64": "$(base64 -w 0 qa2.png)"
         },
                 {
             "type": "image/png",
-	    	"name": "Histogram of Measurements",
-            "base64": "$(base64 -w 0 qa2.png)"
+	    	"name": "B1 Sensitivity Plot",
+            "base64": "$(base64 -w 0 qa1.png)"
         }
     ]
 }
