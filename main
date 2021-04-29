@@ -27,7 +27,7 @@ cat << EOF > product.json
             "type": "image/png",
 	    	"name": "B1 Sensitivity Map",
             "base64": "$(base64 -w 0 qa1.png)"
-        }
+        },
                 {
             "type": "image/png",
 	    	"name": "Histogram of Measurements",
