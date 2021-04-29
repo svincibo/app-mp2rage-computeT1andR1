@@ -2,7 +2,9 @@
 [![Run on Brainlife.io](https://img.shields.io/badge/Brainlife-bl.app.262-blue.svg)](https://doi.org/10.25663/brainlife.app.262)
 
 # app-mp2rage-computeT1andR1
-This app estimates T1map and R1map from MP2RAGE sequence. Currently only supports MP2RAGE data collected on Siemens MRI scanners.
+This app estimates T1map and R1map from MP2RAGE sequence. Before using this app to compute the T1 and R2 maps, you must first denoise the mp2rage uni image (see app-mp2rage-denoiseUNI).
+
+Currently, only MP2RAGE data collected on Siemens MRI scanners is supported.
 
 # Author
 - Sophia Vinci-Booher (svincibo@iu.edu)
