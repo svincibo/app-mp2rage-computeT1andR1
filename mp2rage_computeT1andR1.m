@@ -39,8 +39,10 @@ MP2RAGE.FlipDegrees = [config_inv1.FlipAngle config_inv2.FlipAngle]; % Flip angl
 MP2RAGE.filename = config.unit1; % standard MP2RAGE T1w image;
 MP2RAGE.filenameOUT = fullfile('output', 'unit1.nii.gz');% image without background noise;
 
-if ~isempty(config.mask)
+if isfield(config, 'mask')
     
+    error('Sorry -- this app is not yet able to use a mask during the computation of the T1 and R1 maps.');
+
     % Read in mask.
     mask = niftiRead(config.mask);
     
