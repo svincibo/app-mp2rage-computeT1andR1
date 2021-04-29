@@ -1,0 +1,10 @@
+{
+"mag_inv1": "testdata/mag.inv1.nii.gz",
+"json_inv1": "testdata/mag.inv1.json",
+"mag_inv2": "testdata/mag.inv2.nii.gz",
+"json_inv2": "testdata/mag.inv2.json",
+"unit1": "testdata/unit1.nii.gz",
+"json_unit1": "testdata/unit1.json",
+"mask": "",
+"reg_param": ""
+}

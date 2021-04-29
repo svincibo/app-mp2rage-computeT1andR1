@@ -1,0 +1,38 @@
+#!/bin/bash
+
+#PBS -l nodes=1:ppn=1
+#PBS -l walltime=00:20:00
+#PBS -l vmem=30gb
+
+mkdir -p output
+
+singularity exec -e docker://brainlife/mcr:2020a ./compiled/mp2rage_computeT1andR1
+
+if [ ! -f ./output/T1.nii.gz ]; then
+       echo "mp2rage_computeT1andR1.m didn't produce a T1.nii.gz file"
+       exit 1
+fi
+
+if [ ! -f ./output/R1.nii.gz ]; then
+       echo "mp2rage_computeT1andR1.m didn't produce a R1.nii.gz file"
+       exit 1
+fi
+
+echo "all done"
+
+cat << EOF > product.json
+{
+    "brainlife": [
+        {
+            "type": "image/png",
+	    	"name": "B1 Sensitivity Map",
+            "base64": "$(base64 -w 0 qa1.png)"
+        }
+                {
+            "type": "image/png",
+	    	"name": "Histogram of Measurements",
+            "base64": "$(base64 -w 0 qa2.png)"
+        }
+    ]
+}
+EOF
