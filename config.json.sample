@@ -6,5 +6,5 @@
 "unit1": "testdata/unit1.nii.gz",
 "json_unit1": "testdata/unit1.json",
 "mask": "",
-"reg_param": ""
+"slicesperslab": ""
 }

@@ -25,8 +25,12 @@ MP2RAGE.B0 = config_inv1.MagneticFieldStrength; % in Tesla
 MP2RAGE.TR = config_inv1.RepetitionTime; % MP2RAGE TR in seconds
 MP2RAGE.TRFLASH = (config_inv2.InversionTime - config_inv1.InversionTime)/(config_inv1.BaseResolution*(config_inv1.PercentPhaseFOV/100)); % TR of the GRE readout, per Hu: (TI2-TI1)/(number of phase encoding steps) = (2.5-0.7)/(256*.938) ms = 7.5 ms.
 MP2RAGE.TIs = [config_inv1.InversionTime config_inv2.InversionTime];% inversion times - time between middle of refocusing pulse and excitatoin of the k-space center encoding
-MP2RAGE.NZslices= 176*[config_inv1.PartialFourier-0.5 0.5]; % Slices Per Slab * [PartialFourierInSlice-0.5  0.5] 
-% per Hu: PartialFourierInSlice = 1, so 176*[1-0.5 0.5] = 176*[0.5 0.5] = [88 88].
+if isempty(config.slicesperslab)
+          error('Sorry -- this app is not yet able to determine the SlicesPerSlab parameter from your metadata. Please look at your MRI sequence protocol to find this value and enter it manually when running the app.');
+	  MP2RAGE.NZslices=config_inv1.SlicesPerSlab.*[config_inv1.PartialFourier-0.5 0.5]; % Slices Per Slab * [PartialFourierInSlice-0.5  0.5] 
+else
+	MP2RAGE.NZslices=str2num(config.slicesperslab).*[config_inv1.PartialFourier-0.5 0.5]; % Slices Per Slab * [PartialFourierInSlice-0.5  0.5] ;
+end
 MP2RAGE.FlipDegrees = [config_inv1.FlipAngle config_inv2.FlipAngle]; % Flip angle of the two readouts in degrees
 
 %% Calculate T1map and R1map.
